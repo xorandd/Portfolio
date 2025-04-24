@@ -33,11 +33,18 @@ Simple Python-based reverse shell. Demonstrates:
 
 ---
 
-### Malware Lab *(WIP)*
+### Malware Lab *(will add soon)*
 
 A space for malware development — experimenting with C based payloads, keyloggers, and reverse shells in a controlled lab environment
 
- [Malware Lab](./malware-lab)
+ [View Malware Lab](./malware-lab)
+
+---
+### Writeups *(will add soon)*
+
+Writeups for CTF challenges. Great for learning enumeration and privilege escalation
+
+ [View Writeups](./writeups)
 
 ---
 
