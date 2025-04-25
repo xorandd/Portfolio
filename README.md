@@ -50,7 +50,7 @@ Writeups for CTF challenges. Great for learning enumeration and privilege escala
 
 ## Disclaimer
 
-This content is for educational use only. Do **not** deploy these scripts on networks you do not own
+This content is for educational use only. Do **not** deploy these scripts on systems you do not own
 
 ---
 
