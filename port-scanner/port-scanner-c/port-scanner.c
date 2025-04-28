@@ -13,13 +13,13 @@
 #define TIMEOUT 1
 
 void programUsage(){
-    printf("[*] Usage example: \n");
+    printf("[*] Usage example: ");
     printf(" <ip_address> <start_port> <end_port> \n");
     printf("\n");
     printf("Parameters:\n");
-    printf("    <ip_address>  :  IP address (must be in format: 0.0.0.0)\n");
-    printf("    <start_port>\n");
-    printf("     <end_port>\n");
+    printf("    <ip_address>  :  IP address\n");
+    printf("    <start_port>  :  Starting port\n");
+    printf("     <end_port>   :  Ending port\n");
     printf("[!] Ports should be withing range of 0-65535\n");
 }
 
@@ -71,19 +71,19 @@ int check_ports(const char *ip, int port) {
     int select_result = select(sock + 1, NULL, &write_fds, NULL, &timeout);
 
     if (select_result > 0 && FD_ISSET(sock, &write_fds)) {
-        // Check if the socket connection was successful or if it failed
         getsockopt(sock, SOL_SOCKET, SO_ERROR, &result, &len);
         if (result == 0) {
             close(sock);
-            return 0;  // Port is open
-        } else {
+            return 0;
+        } 
+        else {
             close(sock);
-            return 1;  // Connection failed, port is closed
+            return 1;
         }
     }
 
     close(sock);
-    return 1;  // Port is closed if no activity on socket
+    return 1;
 }
 
 
@@ -97,23 +97,29 @@ void scan_ports(const char *ip, int start_port, int end_port){
     }
 }
 
-int main(){
-    char ip[20];
-    int start_port, end_port;
+int main(int argc, char* argv[]){
 
-    printf("Enter ip and starting/ending ports to scan: ");
-    
-    scanf("%19s%d%d",ip,&start_port,&end_port);
-
-    if(validate_ip(ip) == true){
-        
+    if(argc == 2 && (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0)){
+        programUsage();
+        return 0;
     }
-    else{
-        printf("[!] ERROR. Incorrect IP format. \n");
+
+    if(argc != 4){
+        printf("[!] ERROR. Some arguments are missing\n");
         programUsage();
         return 1;
     }
 
+    char *ip = argv[1];
+    int start_port = atoi(argv[2]);
+    int end_port = atoi(argv[3]);
+
+    if(!validate_ip(ip)){
+        printf("[!] ERROR. Incorrect IP format. \n");
+        programUsage();
+        return 1;
+    }
+    
     printf("\n"); 
     
     if(end_port < start_port){
@@ -131,3 +137,4 @@ int main(){
 
     return 0;
 }
+
