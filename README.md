@@ -15,11 +15,11 @@ Custom built network scanners:
 
 ---
 
-### Backdoor (Python Reverse Shell)
-Simple Python-based reverse shell. Demonstrates:
+### Reverse shell
+**Python/C version**:
 - Persistent shell connection  
 - Remote command execution  
-- Socket handling and subprocesses  
+- Socket handling and subprocesses
 
  [View the backdoor](./backdoor)
 
@@ -27,7 +27,7 @@ Simple Python-based reverse shell. Demonstrates:
 
 ### Tools
 
-- `auto-ip-changer.sh`: Rotates tor IPs using control port scripting
+- auto-ip-changer.sh: Rotates tor IPs using control port scripting
 
  [View tools](./tools)
 
