@@ -40,7 +40,7 @@ A space for malware development — experimenting with C based payloads, keylogg
  [View Malware Lab](./malware-lab)
 
 ---
-### Writeups *(will add soon)*
+### Writeups
 
 Writeups for CTF challenges. Great for learning enumeration and privilege escalation
 
