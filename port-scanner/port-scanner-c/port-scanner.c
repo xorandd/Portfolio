@@ -52,7 +52,7 @@ int check_ports(const char *ip, int port) {
 
     sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0) {
-        printf("[!] Failed to create socket\n");
+        printf("\033[91m[!]\033[0m Failed to create socket\n");
         return 0;
     }
 
@@ -105,7 +105,7 @@ int main(int argc, char* argv[]){
     }
 
     if(argc != 4){
-        printf("[!] ERROR. Some arguments are missing\n");
+        printf("\033[91m[!]\033[0m ERROR. Some arguments are missing\n");
         programUsage();
         return 1;
     }
@@ -115,7 +115,7 @@ int main(int argc, char* argv[]){
     int end_port = atoi(argv[3]);
 
     if(!validate_ip(ip)){
-        printf("[!] ERROR. Incorrect IP format. \n");
+        printf("\033[91m[!]\033[0m ERROR. Incorrect IP format. \n");
         programUsage();
         return 1;
     }
@@ -123,17 +123,24 @@ int main(int argc, char* argv[]){
     printf("\n"); 
     
     if(end_port < start_port){
-        printf("[!] ERROR. end port <= start port, enter valid values.\n");
+        printf("\033[91m[!]\033[0m ERROR. end port <= start port, enter valid values.\n");
         programUsage();
         return 1;
     }
     if(start_port < 0 || end_port > 65535){
-        printf("[!] ERROR. port range: 0-65535");
+        printf("\033[91m[!]\033[0m ERROR. port range: 0-65535\n");
         programUsage();
         return 1;
     }
 
-    scan_ports(ip, start_port, end_port);
+    char ping_cmd[256];
+    sprintf(ping_cmd, "ping -c 1 %s > /dev/null 2>&1", ip);
+    if(system(ping_cmd) == 0){
+        scan_ports(ip, start_port, end_port);
+    }
+    else{
+        printf("\033[91m[!]\033[0m Host is down.\n");
+    }
 
     return 0;
 }
