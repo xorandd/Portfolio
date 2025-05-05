@@ -11,8 +11,7 @@ function scan_ports(){
                 service_name="unknown"
             fi
             echo -e "\t\t   [+] Port $port $service_name is open"
-            sleep 0.4
-            open_ports+=("$port ($service_name)")
+            open_ports+=("$port   $service_name")
             found_port=1
         fi
     done
@@ -33,7 +32,6 @@ function ping_target(){
         echo -e "\n\t\e[1;32m#############################################\e[0m"
         echo -e "\t\e[1;32m#           Host is up. Scanning...        #\e[0m"
         echo -e "\t\e[1;32m#############################################\e[0m\n"
-        sleep 0.5
     else
         echo -e "\n\e[1;31mERROR: host is down\e[0m\n"
         exit 1
