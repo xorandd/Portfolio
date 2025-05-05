@@ -2,7 +2,6 @@
 
 function scan_ports(){
     found_port=0
-    open_ports=()
 
     for ((port=$MIN_PORT; port<=$MAX_PORT; port++)); do
         if nc -zv $host $port &>/dev/null; then
@@ -11,7 +10,6 @@ function scan_ports(){
                 service_name="unknown"
             fi
             echo -e "\t\t   [+] Port $port $service_name is open"
-            open_ports+=("$port   $service_name")
             found_port=1
         fi
     done
@@ -19,18 +17,13 @@ function scan_ports(){
 
     if [ "$found_port" -eq 0 ]; then
         echo -e "\n\e[1;33mNo open ports found in range $MIN_PORT-$MAX_PORT. Try increasing the port range.\e[0m\n"
-    else
-        echo -e "Result of scanning:"
-            for port in "${open_ports[@]}"; do
-                echo "$port"
-            done
     fi
 }
 
 function ping_target(){
     if ping -c 1 $host &> /dev/null; then
         echo -e "\n\t\e[1;32m#############################################\e[0m"
-        echo -e "\t\e[1;32m#           Host is up. Scanning...        #\e[0m"
+        echo -e "\t\e[1;32m#           Host is up. Scanning...         #\e[0m"
         echo -e "\t\e[1;32m#############################################\e[0m\n"
     else
         echo -e "\n\e[1;31mERROR: host is down\e[0m\n"
