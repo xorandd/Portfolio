@@ -34,6 +34,7 @@ Custom built network scanners:
 ### Tools
 
 - auto-ip-changer.sh: Rotates tor IPs using control port scripting
+- dirEnum.py: tool for directory or subdomain enumeration
 
  [View tools](./tools)
 
