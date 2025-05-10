@@ -37,15 +37,7 @@ Custom built network scanners:
 - dirEnum.py: tool for directory or subdomain enumeration
 
  [View tools](./tools)
-
----
-
-### Malware Lab *(will add soon)*
-
-- A space for malware development — experimenting with C based payloads, keyloggers, and reverse shells in a controlled lab environment
-
- [View Malware Lab](./malware-lab)
-
+ 
 ---
 ### Writeups (Another repository)
 
